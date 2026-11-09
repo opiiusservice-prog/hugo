@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hugo · AI helper by your mouse</title>
+<meta name="description" content="Box anything on your Windows screen and Hugo explains it, or solves it step by step on a neat notebook page. Free plan, or Hugo Pro for ₹149 a month.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3CradialGradient id='g' cx='.35' cy='.3'%3E%3Cstop offset='0' stop-color='%23cfe3ff'/%3E%3Cstop offset='.45' stop-color='%2378b9ff'/%3E%3Cstop offset='1' stop-color='%233c5feb'/%3E%3C/radialGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='26' fill='url(%23g)'/%3E%3C/svg%3E">
+<style>
+/* ---------------------------------------------------------------- settings: kept in step with product.json by
+   build.py (between the HUGO-CONFIG markers). Empty values show "coming soon" instead of a broken link. */
+</style>
+<script>
+/* HUGO-CONFIG-START */
+const HUGO = {"currency": "₹", "price_month": 149, "price_year": 1199, "trial_days": 7, "free_answers_per_day": 15, "free_solves_per_day": 2, "seller": "Rishi", "whatsapp": "918638830682", "upi_id": "8638830682@ibl", "download_url": "https://github.com/opiiusservice-prog/hugo/releases/latest/download/Hugo-Windows-1.1.zip", "version": "1.1", "free_plan": false};
+/* HUGO-CONFIG-END */
+</script>
+<style>
+:root {
+  --bg: #fbfbfd; --ink: #16161a; --soft: #5b5b66; --line: #e6e6ec; --card: #ffffff;
+  --accent: #2f7cf6; --accent-ink: #ffffff; --accent-soft: #e8f1ff; --green: #1f9d55; --paper: #fbf9f2;
+  --shadow: 0 18px 50px rgba(20, 30, 60, .12);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #111114; --ink: #f2f2f7; --soft: #a3a3ae; --line: #2a2a31; --card: #1a1a1f;
+    --accent: #5b9bff; --accent-ink: #0b0b0e; --accent-soft: #1b2a44; --green: #5fd38d;
+    --shadow: 0 18px 50px rgba(0, 0, 0, .45);
+  }
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--ink);
+  font: 17px/1.55 "Segoe UI Variable Text", "Segoe UI", system-ui, -apple-system, sans-serif; }
+a { color: var(--accent); }
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+header { position: sticky; top: 0; z-index: 5; background: color-mix(in srgb, var(--bg) 85%, transparent);
+  backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+header .wrap { display: flex; align-items: center; gap: 18px; height: 60px; }
+.logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 20px; color: var(--ink);
+  text-decoration: none; }
+.orb { width: 26px; height: 26px; border-radius: 50%; flex: none;
+  background: radial-gradient(circle at 35% 30%, #cfe3ff 0, #78b9ff 45%, #3c5feb 100%);
+  box-shadow: 0 0 14px rgba(96, 165, 255, .55); }
+header nav { margin-left: auto; display: flex; gap: 18px; font-size: 15px; }
+header nav a { color: var(--soft); text-decoration: none; }
+header nav a:hover { color: var(--ink); }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 22px;
+  border-radius: 12px; font-weight: 600; font-size: 16px; text-decoration: none; border: 1px solid transparent;
+  cursor: pointer; transition: transform .15s ease, box-shadow .15s ease; }
+.btn:hover { transform: translateY(-1px); }
+.btn.primary { background: var(--accent); color: var(--accent-ink); box-shadow: 0 8px 22px rgba(47, 124, 246, .3); }
+.btn.ghost { background: transparent; color: var(--ink); border-color: var(--line); }
+.btn.small { padding: 8px 14px; font-size: 14px; border-radius: 10px; }
+.btn[aria-disabled="true"] { opacity: .55; pointer-events: none; }
+.hero { padding: 64px 0 28px; text-align: center; }
+.pill { display: inline-block; padding: 5px 12px; border-radius: 99px; background: var(--accent-soft);
+  color: var(--accent); font-size: 14px; font-weight: 600; margin-bottom: 18px; }
+h1 { font: 700 clamp(34px, 6vw, 58px)/1.08 "Segoe UI Variable Display", "Segoe UI", system-ui, sans-serif;
+  letter-spacing: -.02em; margin: 0 auto 16px; max-width: 820px; }
+.lead { font-size: clamp(17px, 2.2vw, 20px); color: var(--soft); max-width: 640px; margin: 0 auto 28px; }
+.cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.note { color: var(--soft); font-size: 14px; margin-top: 14px; }
+.shot { margin: 40px auto 0; max-width: 1000px; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow);
+  border: 1px solid var(--line); background: #0d0d10; }
+.shot img { display: block; width: 100%; height: auto; }
+.caption { text-align: center; color: var(--soft); font-size: 14px; margin-top: 12px; }
+section { padding: 72px 0 8px; }
+h2 { font: 700 clamp(26px, 4vw, 38px)/1.15 "Segoe UI Variable Display", "Segoe UI", system-ui, sans-serif;
+  letter-spacing: -.01em; margin: 0 0 10px; text-align: center; }
+.sub { text-align: center; color: var(--soft); margin: 0 auto 36px; max-width: 620px; }
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.step, .feat, .plan, .faq details { background: var(--card); border: 1px solid var(--line); border-radius: 16px; }
+.step { padding: 22px; }
+.num { width: 32px; height: 32px; border-radius: 50%; background: var(--accent-soft); color: var(--accent);
+  display: grid; place-items: center; font-weight: 700; margin-bottom: 12px; }
+.step h3, .feat h3 { margin: 0 0 6px; font-size: 18px; }
+.step p, .feat p { margin: 0; color: var(--soft); font-size: 15.5px; }
+.bar-shot { margin: 26px auto 0; max-width: 580px; border-radius: 14px; overflow: hidden; box-shadow: var(--shadow); }
+.bar-shot img { display: block; width: 100%; height: auto; }
+.feats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.feat { padding: 22px; }
+.feat .ico { font-size: 26px; margin-bottom: 8px; }
+.plans { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; max-width: 820px; margin: 0 auto; }
+.plan { padding: 28px; display: flex; flex-direction: column; }
+.plan.pro { border: 2px solid var(--accent); position: relative; }
+.badge { position: absolute; top: -13px; left: 24px; background: var(--accent); color: var(--accent-ink);
+  font-size: 13px; font-weight: 700; padding: 4px 10px; border-radius: 99px; }
+.plan h3 { margin: 0; font-size: 20px; }
+.price { font: 700 40px/1.1 "Segoe UI Variable Display", "Segoe UI", system-ui, sans-serif; margin: 12px 0 2px; }
+.price small { font-size: 16px; font-weight: 500; color: var(--soft); }
+.plan .alt { color: var(--soft); font-size: 14.5px; margin-bottom: 14px; }
+.plan ul { list-style: none; padding: 0; margin: 0 0 22px; flex: 1; }
+.plan li { padding: 7px 0 7px 28px; position: relative; border-top: 1px solid var(--line); font-size: 15.5px; }
+.plan li::before { content: "✓"; position: absolute; left: 4px; color: var(--green); font-weight: 700; }
+.buy { max-width: 820px; margin: 22px auto 0; background: var(--card); border: 1px solid var(--line);
+  border-radius: 16px; padding: 26px 28px; }
+.buy h3 { margin: 0 0 12px; }
+.buy ol { margin: 0 0 18px; padding-left: 20px; }
+.buy li { margin: 6px 0; }
+.upi { font-family: Consolas, "Cascadia Mono", monospace; background: var(--accent-soft); padding: 2px 8px;
+  border-radius: 6px; word-break: break-all; }
+.row { display: flex; gap: 10px; flex-wrap: wrap; }
+.faq { max-width: 760px; margin: 0 auto; display: grid; gap: 10px; }
+.faq details { padding: 16px 20px; }
+.faq summary { cursor: pointer; font-weight: 600; list-style: none; display: flex; justify-content: space-between;
+  gap: 12px; }
+.faq summary::after { content: "+"; color: var(--soft); font-size: 20px; line-height: 1; }
+.faq details[open] summary::after { content: "–"; }
+.faq p { color: var(--soft); margin: 10px 0 0; font-size: 15.5px; }
+footer { margin-top: 80px; border-top: 1px solid var(--line); padding: 28px 0 40px; color: var(--soft); font-size: 14px; }
+footer .wrap { display: flex; gap: 16px; flex-wrap: wrap; justify-content: space-between; }
+.toast { position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%) translateY(20px); opacity: 0;
+  background: var(--ink); color: var(--bg); padding: 10px 16px; border-radius: 10px; font-size: 14px;
+  transition: all .2s ease; pointer-events: none; }
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+@media (max-width: 820px) {
+  .steps, .feats, .plans { grid-template-columns: 1fr; }
+  header nav a.hide-sm { display: none; }
+  .hero { padding-top: 40px; }
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="logo" href="#"><span class="orb"></span>Hugo</a>
+    <nav>
+      <a class="hide-sm" href="#how">How it works</a>
+      <a class="hide-sm" href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="hero wrap">
+    <span class="pill">For Windows 10 and 11</span>
+    <h1>Box anything on your screen. Hugo explains it.</h1>
+    <p class="lead">An AI helper that lives by your mouse. It explains what you're reading, solves questions step by
+      step on a neat notebook page, and answers by voice in English or Hindi.</p>
+    <div class="cta">
+      <a class="btn primary" data-download href="#">Download free</a>
+      <a class="btn ghost" href="#pricing">See pricing</a>
+    </div>
+    <p class="note"><span data-trial>7</span>-day free trial of everything, then a free plan or Hugo Pro.</p>
+    <div class="shot"><img src="img/solve.png" width="1297" height="926"
+      alt="Hugo solving a physics question on a ruled notebook page, next to the question on the screen"></div>
+    <p class="caption">Box a question, click Solve: a checked, step-by-step solution opens beside it.</p>
+  </div>
+
+  <section id="how">
+    <div class="wrap">
+      <h2>As easy as drawing a box</h2>
+      <p class="sub">No copying, no switching apps. Hugo looks at exactly what you point at.</p>
+      <div class="steps">
+        <div class="step"><div class="num">1</div><h3>Box it</h3>
+          <p>Hold the right mouse button and drag with the left around anything: a question, a paragraph, a chart, an error.</p></div>
+        <div class="step"><div class="num">2</div><h3>Pick a button</h3>
+          <p>Explain, Solve, What, How or When. Or type your own question, or hold Ctrl + Alt and just ask.</p></div>
+        <div class="step"><div class="num">3</div><h3>Get it, fast</h3>
+          <p>A short, clear answer beside the box in seconds, with follow-up questions ready to tap.</p></div>
+      </div>
+      <div class="bar-shot"><img src="img/box-bar.png" width="580" height="210"
+        alt="The buttons that appear next to a box: Explain, Solve, What, How, When and Ask"></div>
+    </div>
+  </section>
+
+  <section id="features">
+    <div class="wrap">
+      <h2>Everything Hugo does</h2>
+      <p class="sub">One helper for studying, work and your messy desktop.</p>
+      <div class="feats">
+        <div class="feat"><div class="ico">📝</div><h3>Solve, step by step</h3>
+          <p>Maths, physics, chemistry, accounts, English and more, written neatly on ruled paper with the answer boxed. A second solve checks it.</p></div>
+        <div class="feat"><div class="ico">💡</div><h3>Explain in plain words</h3>
+          <p>Long text becomes a short headline, one simple line and a few points. Hard words come with their meaning.</p></div>
+        <div class="feat"><div class="ico">🎙️</div><h3>Ask by voice</h3>
+          <p>Hold Ctrl + Alt and talk, in English or Hindi. Hugo answers out loud, or quietly on screen.</p></div>
+        <div class="feat"><div class="ico">🔎</div><h3>What, How, When</h3>
+          <p>The context behind anything, how a formula was derived, or a quick timeline of dates.</p></div>
+        <div class="feat"><div class="ico">🗂️</div><h3>Tidy your PC</h3>
+          <p>Box your open windows, a folder or your desktop: Hugo lines them up neatly, with one-click Undo.</p></div>
+        <div class="feat"><div class="ico">🎮</div><h3>Stays out of the way</h3>
+          <p>Switches itself off during full-screen games and frees your graphics card. Runs only when you open it.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing">
+    <div class="wrap">
+      <h2>Simple pricing</h2>
+      <p class="sub">Start with a <span data-trial>7</span>-day free trial of everything. No card needed.</p>
+      <div class="plans">
+        <div class="plan">
+          <h3>Free</h3>
+          <div class="price"><span data-cur>₹</span>0</div>
+          <div class="alt">Forever</div>
+          <ul>
+            <li><span data-free-a>15</span> answers a day</li>
+            <li><span data-free-s>2</span> Solve pages a day</li>
+            <li>Voice, follow-ups, What / How / When</li>
+            <li>All the tidy-up tools</li>
+          </ul>
+          <a class="btn ghost" data-download href="#">Download free</a>
+        </div>
+        <div class="plan pro">
+          <span class="badge">Most popular</span>
+          <h3>Hugo Pro</h3>
+          <div class="price"><span data-cur>₹</span><span data-pm>149</span> <small>/ month</small></div>
+          <div class="alt">or <span data-cur>₹</span><span data-py>1199</span> a year (save <span data-save>39</span>%)</div>
+          <ul>
+            <li>Unlimited answers</li>
+            <li>Unlimited Solve pages</li>
+            <li>Everything in Free</li>
+            <li>Help on WhatsApp from the maker</li>
+          </ul>
+          <a class="btn primary" href="#buy">Get Hugo Pro</a>
+        </div>
+      </div>
+
+      <div class="buy" id="buy">
+        <h3>How to get Hugo Pro</h3>
+        <ol>
+          <li>Pay <b><span data-cur>₹</span><span data-pm>149</span></b> for a month (or <b><span data-cur>₹</span><span data-py>1199</span></b> for a year) by UPI to
+            <span class="upi" data-upi>coming soon</span></li>
+          <li>Send the payment screenshot on WhatsApp.</li>
+          <li>You get your Hugo Pro key, usually within a few hours. In Hugo: right-click the blue orb by the clock → Account → paste → Activate.</li>
+        </ol>
+        <div class="row">
+          <a class="btn primary small" data-upi-pay href="#">Pay by UPI app</a>
+          <button class="btn ghost small" data-copy-upi type="button">Copy UPI ID</button>
+          <a class="btn ghost small" data-whatsapp href="#">Send screenshot on WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap">
+      <h2>Questions</h2>
+      <div class="faq">
+        <details><summary>Do I have to pay Google too?</summary>
+          <p>No. Hugo uses your own free Google AI key, which takes 2 minutes to make when you first open Hugo (the setup window shows you how). Google's free allowance is plenty for normal daily use.</p></details>
+        <details><summary>Is my screen private?</summary>
+          <p>Hugo only looks when you ask: then a picture of what you boxed (or your screen) goes to Google's AI to answer it. Nothing is sent while Hugo is idle, and your key, notes and settings stay on your PC.</p></details>
+        <details><summary>Which computers does it work on?</summary>
+          <p>Windows 10 and 11 PCs and laptops. The first start downloads Hugo's voice ears (about 500 MB, once). Not available for Mac or phones yet.</p></details>
+        <details><summary>Who is Hugo for?</summary>
+          <p>College students, people preparing for exams, and anyone who reads, studies or works on a PC. Google's AI is for people 18 and over, so Hugo is too.</p></details>
+        <details><summary>Windows says "Windows protected your PC". Is it safe?</summary>
+          <p>Yes. Hugo is new, so Windows doesn't recognise it yet. Click "More info", then "Run anyway".</p></details>
+        <details><summary>What if Pro doesn't work for me?</summary>
+          <p>Try everything free for <span data-trial>7</span> days first. If Hugo Pro doesn't work on your PC, message within 3 days of paying for a full refund.</p></details>
+        <details><summary>Will the answers always be right?</summary>
+          <p>Hugo checks every Solve page with a second, independent solve and marks it ✓ checked, or asks you to double-check when the two don't agree. Like any AI it can make mistakes, so use it to learn, not to copy.</p></details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Hugo · Made in India by <span data-seller>Rishi</span></span>
+    <span>Version <span data-version>1.1</span> · <a data-whatsapp href="#">Contact on WhatsApp</a></span>
+  </div>
+</footer>
+<div class="toast" id="toast"></div>
+
+<script>
+(function () {
+  const c = HUGO, $$ = (s) => document.querySelectorAll(s);
+  const set = (sel, v) => $$(sel).forEach((e) => (e.textContent = v));
+  set("[data-cur]", c.currency); set("[data-pm]", c.price_month); set("[data-py]", c.price_year);
+  set("[data-trial]", c.trial_days); set("[data-free-a]", c.free_answers_per_day);
+  set("[data-free-s]", c.free_solves_per_day); set("[data-seller]", c.seller); set("[data-version]", c.version);
+  set("[data-save]", Math.round((1 - c.price_year / (12 * c.price_month)) * 100));
+  if (c.free_plan === false) {  // no free plan: a free trial, then Hugo Pro only
+    const free = document.querySelector(".plan:not(.pro)");
+    if (free) free.remove();
+    const plans = document.querySelector(".plans");
+    if (plans) { plans.style.gridTemplateColumns = "1fr"; plans.style.maxWidth = "440px"; }
+    $$(".note").forEach((e) => (e.innerHTML = `Try everything free for ${c.trial_days} days. Then Hugo Pro keeps it going.`));
+    $$("[data-download]").forEach((e) => (e.textContent = "Start free trial"));
+  }
+  const off = (sel, label) => $$(sel).forEach((e) => { e.setAttribute("aria-disabled", "true"); e.removeAttribute("href");
+    if (label) e.textContent = label; });
+  if (c.download_url) $$("[data-download]").forEach((e) => (e.href = c.download_url));
+  else off("[data-download]", "Download: coming soon");
+  const wa = (c.whatsapp || "").replace(/\D/g, "");
+  if (wa) {
+    const msg = encodeURIComponent(`Hi! I paid for Hugo Pro (${c.currency}${c.price_month}/month). Here's my screenshot:`);
+    $$("[data-whatsapp]").forEach((e) => { e.href = `https://wa.me/${wa}?text=${msg}`; e.target = "_blank"; e.rel = "noopener"; });
+  } else off("[data-whatsapp]");
+  if (c.upi_id) {
+    set("[data-upi]", c.upi_id);
+    const pay = `upi://pay?pa=${encodeURIComponent(c.upi_id)}&pn=${encodeURIComponent(c.seller)}&am=${c.price_month}&cu=INR&tn=${encodeURIComponent("Hugo Pro")}`;
+    $$("[data-upi-pay]").forEach((e) => (e.href = pay));
+  } else { off("[data-upi-pay]"); off("[data-copy-upi]"); }
+  const toast = (t) => { const el = document.getElementById("toast"); el.textContent = t; el.classList.add("show");
+    setTimeout(() => el.classList.remove("show"), 1800); };
+  $$("[data-copy-upi]").forEach((b) => b.addEventListener("click", async () => {
+    try { await navigator.clipboard.writeText(c.upi_id); toast("UPI ID copied"); } catch (e) { toast(c.upi_id); }
+  }));
+})();
+</script>
+</body>
+</html>
